@@ -50,6 +50,9 @@ body {
 .mt {
     margin-top: var(--mt, 1rem);
 }
+.mb {
+    margin-bottom: var(--mb, 1rem);
+}
 
 // button and link global styles
 a {
@@ -80,4 +83,14 @@ button:hover, .button:hover {
 .text-align {
     --text-a : center;
     text-align: var(--text-a, center);
+}
+
+// utility class to make capitalize
+.capitalize {
+    text-transform: capitalize;
+}
+
+// utility class to make uppercase 
+.uppercase {
+    text-transform: uppercase;
 }
