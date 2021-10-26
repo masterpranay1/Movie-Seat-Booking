@@ -13,6 +13,7 @@
   --movie-wrapper-width: 12em;
   --thumbnail-height: 10em;
   > .movie-wrapper {
+      --mr : 5em;
     position: relative;
     width: var(--movie-wrapper-width);
     padding: 0.5em;
@@ -36,6 +37,7 @@
     border-left: 1px solid var(--clr-sec-xl);
     padding-left: 2em;
     .seats {
+        width: fit-content;
         display: grid;
         grid-template-rows: 1fr 1fr;
         grid-template-columns: 1fr 1fr 1fr;
@@ -71,5 +73,97 @@
     }
     .seat-demo.selected {
         background: lightgreen;
+    }
+}
+@include breakpoint-down(desktop) {
+    .book-seat {
+        --p-in : 2em;
+        > .movie-wrapper {
+            --mr : 2em;
+        }
+    }
+    .seat-book-area {
+        .seats {
+            > ul {
+                > li {
+                    width: 1.5em;
+                    height: 1.5em;
+                }
+            }
+        }
+        .seat-demo {
+            width: 1.5em;
+            height: 1.5em;
+        }
+    }
+}
+@include breakpoint-down(tablet) {
+    .book-seat {
+
+        > .movie-wrapper {
+            img.thumbnail {
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+    .seat-book-area {
+        .seats {
+            > ul {
+                gap: 0.2em;
+                > li {
+                    width: 1em;
+                    height: 1em;
+                }
+            }
+        }
+        .seat-demo {
+            width: 1em;
+            height: 1em;
+            --ml : 1em;
+        }
+        .hint {
+            > span {
+                --ml : 0.5em !important;
+            }
+        }
+    }
+}
+@include breakpoint-down(mid-tablet) {
+    .book-seat {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        --movie-wrapper-width: 100%;
+        > .movie-wrapper {
+            --mr : 0;
+        }
+    }
+    .seat-book-area {
+        border: 0;
+        padding-left: 0;
+    }
+}
+@include breakpoint-down(mobile) {
+    .book-seat {
+        --p-in : 1em;
+    }
+    .seat-book-area {
+        margin-top: 2em;
+        h2 {
+            text-align: center;
+        }
+        .seats {
+            > ul {
+                > li {
+                    width: 1em;
+                    height: 1em;
+                }
+            }
+        }
+        .seat-demo {
+            width: 1em;
+            height: 1em;
+        }
     }
 }

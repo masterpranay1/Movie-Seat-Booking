@@ -8,6 +8,9 @@
   padding-inline: var(--p-in);
   padding-top: var(--p-top);
   padding-bottom: var(--p-bot);
+  @include breakpoint-down(mid-tablet) {
+    --p-in : 2em;
+  }
 }
 
 .movie-list {

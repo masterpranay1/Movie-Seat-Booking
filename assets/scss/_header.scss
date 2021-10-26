@@ -8,6 +8,9 @@ header {
     padding-inline: var(--p-in);
     padding-top: var(--p-top);
     padding-bottom: var(--p-bot);
+    @include breakpoint-down(tablet) {
+        --p-in : 2em;
+    }
 }
 ul {
     list-style: none;
@@ -21,5 +24,10 @@ ul {
     li:not(li.active):hover {
         cursor: pointer;
         color: var(--clr-sec-l);
+    }
+}
+header ul {
+    @include breakpoint-down(tablet) {
+        display: none !important;
     }
 }

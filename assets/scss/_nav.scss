@@ -3,6 +3,9 @@ nav {
     height: fit-content;
     --p-in : 5em;
     padding-inline: var(--p-in);
+    @include breakpoint-down(tablet) {
+        --p-in : 2em;
+    }
 }
 
 nav .left-arrow {

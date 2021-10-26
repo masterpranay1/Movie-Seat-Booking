@@ -26,6 +26,20 @@
     --fs-med : 1.25em; // 20px
     --fs-s : 1em; // 16px
     --fs-xs : 0.75em; // 12px
+    @include breakpoint-down(tablet) {
+        --fs-xl : 1.8em;
+        --fs-l : 1.3em;
+        --fs-med : 1.05em;
+        --fs-s : 0.8em;
+        --fs-xs : 0.55em;
+    }
+    @include breakpoint-down(mid-tablet) {
+        --fs-xl : 1.6em;
+        --fs-l : 1.1em;
+        --fs-med : 0.85em;
+        --fs-s : 0.6em;
+        --fs-xs : 0.35em;
+    }
 }
 
 @for $i from 0 through 4 {

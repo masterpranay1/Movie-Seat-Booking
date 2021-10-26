@@ -65,3 +65,28 @@
 // .category.hide {
 //   display: none;
 // }
+.hide {
+  display: none;
+}
+
+@include breakpoint-down(tablet) {
+  .category {
+    --p-in : 2em;
+    grid-template-areas: "description" "movie" "nav";
+    .description {
+      grid-area: description;
+      width: 100%;
+      align-items: center;
+      text-align: center;
+      // margin: auto;
+    }
+    .icons {
+      grid-area: nav;
+      margin: auto;
+      margin-top: 2em;
+    }
+    .movie-container {
+      grid-area: movie;
+    }
+  }
+}
