@@ -1,0 +1,71 @@
+.movie-list {
+  width: 100%;
+  height: fit-content;
+
+  --p-in: 5em;
+  --p-top: 2em;
+  --p-bot: 2em;
+  padding-inline: var(--p-in);
+  padding-top: var(--p-top);
+  padding-bottom: var(--p-bot);
+}
+
+.movie-list {
+  --movie-wrapper-width: 12em;
+  --thumbnail-height: 10em;
+  > .movie-container {
+    gap: 2em;
+    flex-wrap: wrap;
+    justify-content: center;
+    > .movie-wrapper {
+      position: relative;
+      width: var(--movie-wrapper-width);
+      padding: 0.5em;
+      border-radius: 10px;
+      > img.thumbnail {
+        width: 100%;
+        min-height: var(--thumbnail-height);
+        border-radius: 9px;
+      }
+      img.rupee-icon {
+        width: var(--fs-med);
+        height: var(--fs-med);
+        background: white;
+        padding: 0.5em;
+        box-sizing: content-box;
+        border-radius: 50%;
+      }
+      > *:not(:first-child) {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+      }
+    }
+    > .movie-wrapper::before {
+        position: absolute;
+        content: 'Click to Book';
+        padding: .5em;
+
+        bottom: 0;
+        left: 0;
+        padding-left: 30%;
+        width: 100%;
+        background: yellow;
+        border-radius: 0 0 10px 10px;
+        font-size: var(--fs-xs);
+
+        transition: 0.5s;
+        transform: translateY(75%);
+        opacity: 0;
+        z-index: -1;
+    }
+    > .movie-wrapper:hover {
+      cursor: pointer;
+      border-radius: 10px 10px 0 0;
+      &::before {
+          transform: translateY(100%);
+          opacity: 1;
+          z-index: 1;
+      }
+    }
+  }
+}

@@ -28,7 +28,7 @@
     --fs-xs : 0.75em; // 12px
 }
 
-@for $i from 1 through 4 {
+@for $i from 0 through 4 {
     .fw-#{300+100*$i} {
         font-weight: var(--fw-#{300+100*$i});
     }
