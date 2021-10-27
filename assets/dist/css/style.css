@@ -34,8 +34,8 @@
     --fs-xl: 1.6em;
     --fs-l: 1.1em;
     --fs-med: 0.85em;
-    --fs-s: 0.6em;
-    --fs-xs: 0.35em;
+    --fs-s: 0.7em;
+    --fs-xs: 0.6em;
   }
 }
 
@@ -628,7 +628,9 @@ ul li:not(li.active):hover {
 }
 
 nav {
-  width: 100%;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
