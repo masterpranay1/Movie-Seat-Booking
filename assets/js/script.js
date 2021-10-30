@@ -56,27 +56,27 @@ let currMovieName = null;
 
 // SEAT MATRIX
 let SEATMATRIX = {
-  "chichore": [
+  chichore: [
     [1, 2, 3],
     [45, 23],
   ],
-  "extraction": [
+  extraction: [
     [2, 4, 5, 40],
     [22, 23],
   ],
-  "ludo": [
+  ludo: [
     [3, 4],
     [45, 71],
   ],
-  "godzilla": [
+  godzilla: [
     [2, 4, 45],
     [3, 56],
   ],
-}; 
-if(localStorage.getItem('seatmatrix')) {
-  SEATMATRIX = JSON.parse(localStorage.getItem('seatmatrix'));
+};
+if (localStorage.getItem("seatmatrix")) {
+  SEATMATRIX = JSON.parse(localStorage.getItem("seatmatrix"));
 } else {
-  localStorage.setItem('seatmatrix', JSON.stringify(SEATMATRIX));
+  localStorage.setItem("seatmatrix", JSON.stringify(SEATMATRIX));
 }
 
 const updateSeatBookMovieDom = (movie) => {
@@ -125,7 +125,7 @@ seats.forEach((seat) => {
     SEATMATRIX[currMovieName][1] = occupied;
     updateSeatBookMatrixDom();
     updatePrice(currMovieName);
-    localStorage.setItem('seatmatrix', JSON.stringify(SEATMATRIX));
+    localStorage.setItem("seatmatrix", JSON.stringify(SEATMATRIX));
   });
   seatNum++;
 });
@@ -313,7 +313,11 @@ addEventOnCategory();
 goBack.addEventListener("click", (e) => {
   state = "back";
   movieContainer.innerHTML = "";
-  updateMovieListDom(movies);
+  updateMovieListDom(
+    movies,
+    "movie list",
+    "We are providing you a collection which you will love to watch"
+  );
   addEventOnMovieList();
   changeState();
   currMovieName = null;
@@ -337,6 +341,6 @@ searchButton.addEventListener("click", (e) => {
   movieContainer.innerHTML = "";
   updateMovieListDom(movieFiltered);
   addEventOnMovieList();
-  
+
   searchInput.value = "";
 });
