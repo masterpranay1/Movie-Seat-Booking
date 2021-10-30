@@ -9,7 +9,7 @@ let imageNumber = 0;
 const changeHeroMovie = () => {
   imageNumber = (imageNumber + 4) % 4;
   // image css properties
-  heroContainer.style.background = `url(/assets/images/${heroMovieImages[imageNumber]}.jpg)`;
+  heroContainer.style.background = `url("https://masterpranay1.github.io/Movie-seat-booking/assets/images/${heroMovieImages[imageNumber]}.jpg")`;
   heroContainer.style.backgroundSize = "cover";
   heroContainer.style.backgroundRepeat = "no-repeat";
   heroContainer.style.backgroundPosition = "right";
