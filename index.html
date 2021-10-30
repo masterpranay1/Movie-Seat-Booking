@@ -9,7 +9,7 @@
   </head>
   <body class="flex flex-col clr-pri-bg">
     <!-- header and nav  -->
-    <header class="flex flex-row flex-ai-c clr-ter-bg">
+    <header class="flex flex-row flex-ai-c clr-ter-bg" id="header">
       <h1 class="fs-l">Movie.</h1>
       <ul class="flex flex-row flex-jc-sa flex-ai-c ml" style="--ml: auto">
         <li class="clr-sec-xl-text fs-s active">Home</li>
@@ -21,7 +21,8 @@
       <button class="ml fs-s" style="--ml: 1em">Sign up</button>
     </header>
 
-    <nav class="flex flex-row flex-ai-c mt" style="--mt: 2em">
+    <!-- go back button  -->
+    <nav class="flex flex-row flex-ai-c mt hide" style="--mt: 2em" id="nav">
       <svg
         class="left-arrow"
         width="32"
@@ -41,8 +42,8 @@
     </nav>
 
     <!-- hero and search -->
-    <section class="hero">
-      <div class="hero__container clr-ter-text text-align">
+    <section class="hero" id="hero">
+      <div class="hero__container clr-ter-text text-align" id="hero__container">
         <h3 class="fs-s mt clr-ter-xl-text">Enjoy Watching Movies</h3>
         <h2 class="fs-xl mt clr-ter-text" style="--fs-xl: 2.5em">
           Book Your Favourite Movies
@@ -50,6 +51,7 @@
         <div class="movie-name-container flex flex-row flex-jc-c flex-ai-c mt">
           <svg
             class="left-arrow"
+            id="hero__left-arrow"
             width="32"
             height="32"
             viewBox="0 0 32 32"
@@ -63,9 +65,10 @@
               fill="rgba(255, 255, 255, .8)"
             />
           </svg>
-          <h2 class="fs-m ml mr clr-ter-l-text">Extraction</h2>
+          <h2 class="fs-m ml mr clr-ter-l-text uppercase" id="hero__movie-name">Extraction</h2>
           <svg
             class="right-arrow"
+            id="hero__right-arrow"
             width="32"
             height="32"
             viewBox="0 0 32 32"
@@ -81,7 +84,7 @@
           </svg>
         </div>
       </div>
-      <div class="search__container flex flex-row flex-jc-c hide">
+      <div class="search__container flex flex-row flex-jc-c">
         <input
           maxlength="20"
           type="text"
@@ -99,7 +102,7 @@
     </section>
 
     <!-- movie category  -->
-    <section class="category clr-ter-bg mt mb" style="--mb: 3em">
+    <section class="category clr-ter-bg mt mb" style="--mb: 3em" id="category">
       <div class="description flex flex-col clr-pri-bg">
         <h2 class="fs-mid">Categories</h2>
         <p class="fs-s clr-sec-xl-text mt" style="--mt: 0.5em">
@@ -109,6 +112,7 @@
       <div class="icons flex flex-row">
         <svg
           class="left-arrow"
+          id="category__left-arrow"
           width="32"
           height="32"
           viewBox="0 0 32 32"
@@ -124,6 +128,7 @@
         </svg>
         <svg
           class="right-arrow ml"
+          id="category__right-arrow"
           width="32"
           height="32"
           viewBox="0 0 32 32"
@@ -179,186 +184,26 @@
     </section>
 
     <!-- movie list  -->
-    <section class="movie-list clr-ter-bg mt mb" style="--mt: 2em">
+    <section class="movie-list clr-ter-bg mt mb" style="--mt: 2em" id="movie-list">
       <h2 class="text-align capitalize fw-500">Action Movies</h2>
       <p class="clr-sec-l-text text-align mt" style="--mt: 0.5em">
         We are providing you a collection which you will love to watch
       </p>
-      <div class="movie-container flex flex-row mt" style="--mt: 4em">
-        <div class="movie-wrapper clr-pri-bg">
-          <img
-            class="thumbnail"
-            src="./assets/images/extraction.jpg"
-            alt="movie image"
-          />
-          <h2 class="mt fw-400" style="--mt: 1rem">Extraction</h2>
-          <p
-            class="description mt mb clr-sec-xl-text fs-s"
-            style="--mt: 0.5rem"
-          >
-            A wizarding world full of secrets and magic
-          </p>
-          <div class="price-wrapper flex flex-row flex-ai-c">
-            <img
-              src="./assets/images/rupee-sign.svg"
-              alt="rupee sign"
-              class="rupee-icon mr"
-              style="--mr: 1em"
-            />
-            <h3 class="price fs-mel clr-sec-text">120.00</h3>
-          </div>
-        </div>
-        <div class="movie-wrapper clr-pri-bg">
-          <img
-            class="thumbnail"
-            src="./assets/images/extraction.jpg"
-            alt="movie image"
-          />
-          <h2 class="mt fw-400" style="--mt: 1rem">Extraction</h2>
-          <p
-            class="description mt mb clr-sec-xl-text fs-s"
-            style="--mt: 0.5rem"
-          >
-            A wizarding world full of secrets and magic
-          </p>
-          <div class="price-wrapper flex flex-row flex-ai-c">
-            <img
-              src="./assets/images/rupee-sign.svg"
-              alt="rupee sign"
-              class="rupee-icon mr"
-              style="--mr: 1em"
-            />
-            <h3 class="price fs-mel clr-sec-text">120.00</h3>
-          </div>
-        </div>
-        <div class="movie-wrapper clr-pri-bg">
-          <img
-            class="thumbnail"
-            src="./assets/images/extraction.jpg"
-            alt="movie image"
-          />
-          <h2 class="mt fw-400" style="--mt: 1rem">Extraction</h2>
-          <p
-            class="description mt mb clr-sec-xl-text fs-s"
-            style="--mt: 0.5rem"
-          >
-            A wizarding world full of secrets and magic
-          </p>
-          <div class="price-wrapper flex flex-row flex-ai-c">
-            <img
-              src="./assets/images/rupee-sign.svg"
-              alt="rupee sign"
-              class="rupee-icon mr"
-              style="--mr: 1em"
-            />
-            <h3 class="price fs-mel clr-sec-text">120.00</h3>
-          </div>
-        </div>
-        <div class="movie-wrapper clr-pri-bg">
-          <img
-            class="thumbnail"
-            src="./assets/images/extraction.jpg"
-            alt="movie image"
-          />
-          <h2 class="mt fw-400" style="--mt: 1rem">Extraction</h2>
-          <p
-            class="description mt mb clr-sec-xl-text fs-s"
-            style="--mt: 0.5rem"
-          >
-            A wizarding world full of secrets and magic
-          </p>
-          <div class="price-wrapper flex flex-row flex-ai-c">
-            <img
-              src="./assets/images/rupee-sign.svg"
-              alt="rupee sign"
-              class="rupee-icon mr"
-              style="--mr: 1em"
-            />
-            <h3 class="price fs-mel clr-sec-text">120.00</h3>
-          </div>
-        </div>
-        <div class="movie-wrapper clr-pri-bg">
-          <img
-            class="thumbnail"
-            src="./assets/images/extraction.jpg"
-            alt="movie image"
-          />
-          <h2 class="mt fw-400" style="--mt: 1rem">Extraction</h2>
-          <p
-            class="description mt mb clr-sec-xl-text fs-s"
-            style="--mt: 0.5rem"
-          >
-            A wizarding world full of secrets and magic
-          </p>
-          <div class="price-wrapper flex flex-row flex-ai-c">
-            <img
-              src="./assets/images/rupee-sign.svg"
-              alt="rupee sign"
-              class="rupee-icon mr"
-              style="--mr: 1em"
-            />
-            <h3 class="price fs-mel clr-sec-text">120.00</h3>
-          </div>
-        </div>
-        <div class="movie-wrapper clr-pri-bg">
-          <img
-            class="thumbnail"
-            src="./assets/images/extraction.jpg"
-            alt="movie image"
-          />
-          <h2 class="mt fw-400" style="--mt: 1rem">Extraction</h2>
-          <p
-            class="description mt mb clr-sec-xl-text fs-s"
-            style="--mt: 0.5rem"
-          >
-            A wizarding world full of secrets and magic
-          </p>
-          <div class="price-wrapper flex flex-row flex-ai-c">
-            <img
-              src="./assets/images/rupee-sign.svg"
-              alt="rupee sign"
-              class="rupee-icon mr"
-              style="--mr: 1em"
-            />
-            <h3 class="price fs-mel clr-sec-text">120.00</h3>
-          </div>
-        </div>
-        <div class="movie-wrapper clr-pri-bg">
-          <img
-            class="thumbnail"
-            src="./assets/images/extraction.jpg"
-            alt="movie image"
-          />
-          <h2 class="mt fw-400" style="--mt: 1rem">Extraction</h2>
-          <p
-            class="description mt mb clr-sec-xl-text fs-s"
-            style="--mt: 0.5rem"
-          >
-            A wizarding world full of secrets and magic
-          </p>
-          <div class="price-wrapper flex flex-row flex-ai-c">
-            <img
-              src="./assets/images/rupee-sign.svg"
-              alt="rupee sign"
-              class="rupee-icon mr"
-              style="--mr: 1em"
-            />
-            <h3 class="price fs-mel clr-sec-text">120.00</h3>
-          </div>
-        </div>
+      <div class="movie-container flex flex-row mt" style="--mt: 4em" id="movie-container">
       </div>
     </section>
 
     <!-- seat booking  -->
-    <section class="book-seat flex flex-row flex-jc-c clr-ter-bg mt mb" style="--mt: 2em;">
+    <section class="book-seat flex flex-row flex-jc-c clr-ter-bg mt mb hide" style="--mt: 2em;" id="seat-book">
       <div class="movie-wrapper mr">
         <img
           class="thumbnail"
           src="./assets/images/extraction.jpg"
           alt="movie image"
+          id="seat-book__movie-image"
         />
-        <h2 class="mt fw-400" style="--mt: 1rem">Extraction</h2>
-        <p class="description mt mb clr-sec-xl-text fs-s" style="--mt: 0.5rem">
+        <h2 class="mt fw-400" style="--mt: 1rem" id="seat-book__movie-name">Extraction</h2>
+        <p class="description mt mb clr-sec-xl-text fs-s" style="--mt: 0.5rem" id="seat-book__movie-description">
           A wizarding world full of secrets and magic
         </p>
         <div class="price-wrapper flex flex-row flex-ai-c">
@@ -368,15 +213,15 @@
             class="rupee-icon mr"
             style="--mr: 1em"
           />
-          <h3 class="price fs-mel clr-sec-text">120.00</h3>
+          <h3 class="price fs-mel clr-sec-text" id="seat-book__movie-price">120.00</h3>
         </div>
       </div>
 
       <!-- component where users can select there seats  -->
-      <div class="seat-book-area flex flex-col flex-ai-c flex-jc-c">
+      <div class="seat-book-area flex flex-col flex-ai-c flex-jc-c" id="seat-book-area">
         <h2 class="fs-med fw-400">Select Seats :-</h2>
-        <div class="seats mt mb">
-          <ul class="row-1-front">
+        <div class="seats mt mb" id="seats">
+          <ul class="row-1-front" id="row-1-front">
             <li class="selected"></li>
             <li></li>
             <li></li>
@@ -470,10 +315,10 @@
           <span class="ml uppercase fs-s clr-sec-xl-text" style="--ml:1em">Vacant</span>
         </div>
         <div class="calc-area clr-sec-xl-text mt text-align mb">
-          You have selected <span class="clr-sec-text">5</span> seats for <span class="clr-sec-text">600 rupees</span>
+          You have selected <span class="clr-sec-text" id="quantity">5</span> seats for <span class="clr-sec-text" id="total-price">600 rupees</span>
         </div>
       </div>
     </section>
-    <script src="./assets/js/script.js" type="module"></script>
+    <script src="./assets/js/script.js" defer></script>
   </body>
 </html>

@@ -43,15 +43,19 @@
         grid-template-columns: 1fr 1fr 1fr;
         gap: 2em;
         > ul {
+            width: fit-content;
+            height: fit-content;
             display: grid;
             grid-template-rows: repeat(3, 1fr);
             grid-template-columns: repeat(4, 1fr);
             gap: .5em;
+            list-style: none;
             > li {
                 width: 2em;
                 height: 2em;
                 background: var(--clr-sec-l);
                 border-radius: 50% 50% 0 0;
+                cursor: pointer;
             }
             > li.occupied {
                 background: cyan;

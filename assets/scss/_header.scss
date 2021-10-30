@@ -12,7 +12,7 @@ header {
         --p-in : 2em;
     }
 }
-ul {
+header ul {
     list-style: none;
     > li:not(:first-child) {
         --ml : 2em;
