@@ -55,24 +55,29 @@ const totalPriceElem = document.querySelector("#total-price");
 let currMovieName = null;
 
 // SEAT MATRIX
-const SEATMATRIX = {
-  chichore: [
+let SEATMATRIX = {
+  "chichore": [
     [1, 2, 3],
     [45, 23],
   ],
-  extraction: [
+  "extraction": [
     [2, 4, 5, 40],
     [22, 23],
   ],
-  ludo: [
+  "ludo": [
     [3, 4],
     [45, 71],
   ],
-  godzilla: [
+  "godzilla": [
     [2, 4, 45],
     [3, 56],
   ],
-};
+}; 
+if(localStorage.getItem('seatmatrix')) {
+  SEATMATRIX = JSON.parse(localStorage.getItem('seatmatrix'));
+} else {
+  localStorage.setItem('seatmatrix', JSON.stringify(SEATMATRIX));
+}
 
 const updateSeatBookMovieDom = (movie) => {
   movieName.textContent = movie.name.toUpperCase();
@@ -120,6 +125,7 @@ seats.forEach((seat) => {
     SEATMATRIX[currMovieName][1] = occupied;
     updateSeatBookMatrixDom();
     updatePrice(currMovieName);
+    localStorage.setItem('seatmatrix', JSON.stringify(SEATMATRIX));
   });
   seatNum++;
 });
