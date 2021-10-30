@@ -501,7 +501,7 @@ header ul li:not(li.active):hover {
 }
 
 .category .movie-container > li {
-  width: var(--li-width);
+  min-width: var(--li-width);
   height: var(--li-width);
   text-transform: capitalize;
   margin-right: 2em;

@@ -49,7 +49,7 @@
       display: none;
     }
     > li {
-      width: var(--li-width);
+      min-width: var(--li-width);
       height: var(--li-width);
       text-transform: capitalize;
       margin-right: 2em;
