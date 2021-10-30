@@ -502,18 +502,19 @@ header ul li:not(li.active):hover {
 
 .category .movie-container > li {
   width: var(--li-width);
+  height: var(--li-width);
   text-transform: capitalize;
   margin-right: 2em;
-}
-
-.category .movie-container > li img {
-  width: var(--li-width);
-  height: var(--li-width);
   border-radius: 10px;
+  cursor: pointer;
 }
 
 .category .movie-container > li:not(:first-child) {
   margin-left: var(--ml);
+}
+
+.category .movie-container > li:hover {
+  background: var(--clr-sec-xl);
 }
 
 .hide {

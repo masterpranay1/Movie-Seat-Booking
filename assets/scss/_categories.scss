@@ -50,15 +50,16 @@
     }
     > li {
       width: var(--li-width);
+      height: var(--li-width);
       text-transform: capitalize;
       margin-right: 2em;
-      img {
-        width: var(--li-width);
-        height: var(--li-width);
-        border-radius: 10px;
-      }
+      border-radius: 10px;
+      cursor: pointer;
       &:not(:first-child) {
         margin-left: var(--ml);
+      }
+      &:hover {
+        background: var(--clr-sec-xl);
       }
     }
   }

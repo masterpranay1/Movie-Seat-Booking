@@ -1,3 +1,7 @@
+/* ******************** */
+/* hero carousel script */
+/* ******************** */
+
 const heroLeftArrow = document.querySelector("#hero__left-arrow");
 const heroRightArrow = document.querySelector("#hero__right-arrow");
 const heroContainer = document.querySelector("#hero__container");
@@ -24,6 +28,133 @@ heroRightArrow.addEventListener("click", (e) => {
   imageNumber++;
   changeHeroMovie();
 });
+
+/* ****************************** */
+/* Updating seat matrix and movie */
+/* ****************************** */
+
+const header = document.querySelector("#header");
+const goBack = document.querySelector("#nav");
+const hero = document.querySelector("#hero");
+const category = document.querySelector("#category");
+const movieList = document.querySelector("#movie-list");
+const seatBook = document.querySelector("#seat-book");
+
+// selections from seatBook component -> movie details
+const seats = seatBook.querySelectorAll("li");
+const movieName = document.querySelector("#seat-book__movie-name");
+const description = document.querySelector("#seat-book__movie-description");
+const image = document.querySelector("#seat-book__movie-image");
+const price = document.querySelector("#seat-book__movie-price");
+
+// selections from seatBook component -> quantity and total pricing details
+const quantityElem = document.querySelector("#quantity");
+const totalPriceElem = document.querySelector("#total-price");
+
+// current selected movie name
+let currMovieName = null;
+
+// SEAT MATRIX
+const SEATMATRIX = {
+  chichore: [
+    [1, 2, 3],
+    [45, 23],
+  ],
+  extraction: [
+    [2, 4, 5, 40],
+    [22, 23],
+  ],
+  ludo: [
+    [3, 4],
+    [45, 71],
+  ],
+  godzilla: [
+    [2, 4, 45],
+    [3, 56],
+  ],
+};
+
+const updateSeatBookMovieDom = (movie) => {
+  movieName.textContent = movie.name.toUpperCase();
+  description.textContent = movie.description;
+  image.src = movie.imageUrl;
+  price.textContent = movie.price;
+};
+const updateSeatBookMatrixDom = (name = currMovieName) => {
+  if (currMovieName == null) currMovieName = name;
+  let cnt = 0;
+  seats.forEach((seat) => {
+    if (SEATMATRIX[name][0].includes(cnt)) {
+      seat.classList.add("selected");
+      seat.classList.remove("occupied");
+    } else if (SEATMATRIX[name][1].includes(cnt)) {
+      seat.classList.remove("selected");
+      seat.classList.add("occupied");
+    } else {
+      seat.classList.remove("selected");
+      seat.classList.remove("occupied");
+    }
+    cnt++;
+  });
+};
+const updatePrice = (name) => {
+  let quantity = SEATMATRIX[name][0].length;
+  let totalPrice = +quantity * +price.textContent;
+  quantityElem.textContent = quantity;
+  totalPriceElem.textContent = totalPrice;
+};
+
+let seatNum = 0;
+seats.forEach((seat) => {
+  seat.num = seatNum;
+  seat.addEventListener("click", (e) => {
+    let selected = SEATMATRIX[currMovieName][0];
+    let occupied = SEATMATRIX[currMovieName][1];
+    if (selected.includes(seat.num)) {
+      const index = selected.indexOf(seat.num);
+      selected.splice(index, 1);
+    } else if (!selected.includes(seat.num) && !occupied.includes(seat.num)) {
+      selected.push(seat.num);
+    }
+    SEATMATRIX[currMovieName][0] = selected;
+    SEATMATRIX[currMovieName][1] = occupied;
+    updateSeatBookMatrixDom();
+    updatePrice(currMovieName);
+  });
+  seatNum++;
+});
+
+/* ****************************** */
+/* different state of application */
+/* ****************************** */
+let state = null;
+const changeState = () => {
+  if (state == "bookSeat") {
+    goBack.classList.remove("hide");
+    hero.classList.add("hide");
+    category.classList.add("hide");
+    movieList.classList.add("hide");
+    seatBook.classList.remove("hide");
+  }
+  if (state == "back") {
+    goBack.classList.add("hide");
+    hero.classList.remove("hide");
+    category.classList.remove("hide");
+    movieList.classList.remove("hide");
+    seatBook.classList.add("hide");
+  }
+  if (state == "category") {
+    goBack.classList.remove("hide");
+    hero.classList.add("hide");
+    category.classList.add("hide");
+    movieList.classList.remove("hide");
+    seatBook.classList.add("hide");
+  }
+};
+
+/* ********************************* */
+/* Listing Movies and Filtering them */
+/* ********************************* */
 
 const movies = [
   {
@@ -83,123 +214,123 @@ const newMovie = (movie) => {
   `;
 };
 const movieContainer = document.querySelector("#movie-container");
-movies.forEach((movie) => {
-  movieContainer.innerHTML += newMovie(movie);
-});
-
-/* ********************** */
-/* selecting DOM elements */
-/* ********************** */
-
-const header = document.querySelector("#header");
-const goBack = document.querySelector("#nav");
-const hero = document.querySelector("#hero");
-const category = document.querySelector("#category");
-const movieList = document.querySelector("#movie-list");
-const seatBook = document.querySelector("#seat-book");
-
-// selections from seatBook component -> movie details
-const seats = seatBook.querySelectorAll("li");
-const movieName = document.querySelector("#seat-book__movie-name");
-const description = document.querySelector("#seat-book__movie-description");
-const image = document.querySelector("#seat-book__movie-image");
-const price = document.querySelector("#seat-book__movie-price");
-
-// selections from seatBook component -> quantity and total pricing details
-const quantityElem = document.querySelector('#quantity');
-const totalPriceElem = document.querySelector('#total-price');
-
-// current selected movie name
-let currMovieName = null;
-
-// SEAT MATRIX
-const SEATMATRIX = {
-  chichore: [
-    [1, 2, 3],
-    [45, 23],
-  ],
-  extraction: [
-    [2, 4, 5, 40],
-    [22, 23],
-  ],
-  ludo: [
-    [3, 4],
-    [45, 71],
-  ],
-  godzilla: [
-    [2, 4, 45],
-    [3, 56],
-  ],
-};
-
-const updateSeatBookMovieDom = (movie) => {
-  movieName.textContent = movie.name.toUpperCase();
-  description.textContent = movie.description;
-  image.src = movie.imageUrl;
-  price.textContent = movie.price;
-};
-const updateSeatBookMatrixDom = (name = currMovieName) => {
-  if (currMovieName == null) currMovieName = name;
-  let cnt = 0;
-  seats.forEach((seat) => {
-    if (SEATMATRIX[name][0].includes(cnt)) {
-      seat.classList.add("selected");
-    } else if (SEATMATRIX[name][1].includes(cnt)) {
-      seat.classList.add("occupied");
-    } else {
-      seat.classList.remove("selected");
-      seat.classList.remove("occupied");
-    }
-    cnt++;
+const movieListName = document.querySelector("#movie-list__name");
+const movieListDescription = document.querySelector("#movie-list__description");
+const updateMovieListDom = (movies, name = null, description = null) => {
+  movieListName.textContent = name;
+  movieListDescription.textContent = description;
+  movieContainer.setAttribute("style", "--mt:4em");
+  movies.forEach((movie) => {
+    movieContainer.innerHTML += newMovie(movie);
   });
+  if (movies.length == 0) {
+    const newElem = document.createElement("p");
+    newElem.className = "text-align clr-sec-l-text fw-700 fs-xl";
+    newElem.textContent = "No Movied Found";
+    movieContainer.appendChild(newElem);
+    movieContainer.setAttribute("style", "--mt:0em");
+  }
 };
-const updatePrice = name => {
-  let quantity = SEATMATRIX[name][0].length;
-  let totalPrice = +quantity * +price.textContent;
-  quantityElem.textContent = quantity;
-  totalPriceElem.textContent = totalPrice;
-};
-const changeState = () => {
-    goBack.classList.toggle('hide');
-    hero.classList.toggle('hide');
-    category.classList.toggle('hide');
-    movieList.classList.toggle('hide');
-    seatBook.classList.toggle('hide');
-};
+updateMovieListDom(
+  movies,
+  "movie list",
+  "We are providing you a collection which you will love to watch"
+); // adding all to list
 
-movieList.querySelectorAll(".movie-wrapper").forEach((movieWrapper) => {
-  movieWrapper.addEventListener("click", (e) => {
-    let name = movieWrapper.querySelector("h2").textContent.toLowerCase();
-    movies.forEach((movie) => {
-      if (movie.name == name) {
-        updateSeatBookMovieDom(movie);
-        updateSeatBookMatrixDom(movie.name);
-        updatePrice(movie.name);  
-      }
+const addEventOnMovieList = () => {
+  // changing innerHtml removes all the events releated to the element
+  movieList.querySelectorAll(".movie-wrapper").forEach((movieWrapper) => {
+    movieWrapper.addEventListener("click", (e) => {
+      let name = movieWrapper.querySelector("h2").textContent.toLowerCase();
+      movies.forEach((movie) => {
+        if (movie.name == name) {
+          updateSeatBookMovieDom(movie);
+          updateSeatBookMatrixDom(movie.name);
+          updatePrice(movie.name);
+        }
+      });
+      state = "bookSeat";
+      changeState();
     });
-    changeState();
   });
-});
-goBack.addEventListener('click', e => {
+};
+addEventOnMovieList();
+
+/* ************************************* */
+/* category and filtering part continued */
+/* ************************************* */
+
+const categoryContainer = document.querySelector("#category-container");
+const updateCategoryDom = () => {
+  const categories = [];
+  movies.forEach((movie) => {
+    if (!categories.includes(movie.category)) {
+      categories.push(movie.category);
+    }
+  });
+  categories.forEach((category) => {
+    categoryContainer.innerHTML += `
+  <li class="movie clr-sec-l-bg clr-ter-text flex flex-jc-c flex-ai-c">
+    <h2 class="fw-400 fs-med text-align">${category}</h2>
+  </li>
+  `;
+  });
+};
+const addEventOnCategory = () => {
+  categoryContainer.querySelectorAll("li").forEach((category) => {
+    category.addEventListener("click", (e) => {
+      // console.log(category.textContent);
+      let categoryName = "";
+      for (let i = 0; i < category.textContent.length; i++) {
+        if (category.textContent[i] >= "a" && category.textContent[i] <= "z") {
+          categoryName += category.textContent[i];
+        }
+      }
+      const movieFiltered = movies.filter((movie) => {
+        return categoryName == movie.category;
+      });
+      state = "category";
+      changeState();
+      movieContainer.innerHTML = "";
+      updateMovieListDom(movieFiltered, categoryName);
+      addEventOnMovieList();
+    });
+  });
+};
+updateCategoryDom();
+addEventOnCategory();
+
+/* ****************** */
+/* going back to home */
+/* ****************** */
+
+goBack.addEventListener("click", (e) => {
+  state = "back";
+  movieContainer.innerHTML = "";
+  updateMovieListDom(movies);
+  addEventOnMovieList();
   changeState();
   currMovieName = null;
 });
-let seatNum = 0;
-seats.forEach(seat => {
-  seat.num = seatNum;
-  seat.addEventListener('click', e => {
-    let selected = SEATMATRIX[currMovieName][0];
-    let occupied = SEATMATRIX[currMovieName][1];
-    if(selected.includes(seat.num)) {
-      const index = selected.indexOf(seat.num);
-      selected.splice(index, 1);
-    } else if(!selected.includes(seat.num) && !occupied.includes(seat.num)) {
-      selected.push(seat.num);
-    } 
-    SEATMATRIX[currMovieName][0] = selected;
-    SEATMATRIX[currMovieName][1] = occupied;
-    updateSeatBookMatrixDom();
-    updatePrice(currMovieName);
+
+/* ************** */
+/* search feature */
+/* ************** */
+
+const searchInput = document.querySelector("#search-input");
+const searchButton = document.querySelector("#search-button");
+
+searchButton.addEventListener("click", (e) => {
+  let searchTextTmp = searchInput.value.toLowerCase();
+  let searchText = searchTextTmp.trim();
+  let movieFiltered = movies.filter((movie) => {
+    return movie.name == searchText;
   });
-  seatNum++;
-})
+  state = "category";
+  changeState();
+  movieContainer.innerHTML = "";
+  updateMovieListDom(movieFiltered);
+  addEventOnMovieList();
+  
+  searchInput.value = "";
+});

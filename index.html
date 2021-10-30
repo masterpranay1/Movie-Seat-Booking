@@ -90,8 +90,9 @@
           type="text"
           class="movie-search-field clr-sec-l-text"
           placeholder="Search among all the movies"
+          id="search-input"
         />
-        <div class="img-container clr-ter-bg">
+        <div class="img-container clr-ter-bg" id="search-button">
           <img
             class="search-icon"
             src="./assets/images/search.svg"
@@ -143,50 +144,17 @@
           />
         </svg>
       </div>
-      <ul class="movie-container mt flex flex-row" style="--mt: 4em">
-        <li class="movie">
-          <img src="./assets/images/chichore.jpg" alt="movie thumbnail" />
-          <h2 class="fw-400 fs-med text-align">chichore</h2>
-        </li>
-        <li class="movie">
-          <img src="./assets/images/ludo.jpg" alt="movie thumbnail" />
-          <h2 class="fw-400 fs-med text-align">Ludo</h2>
-        </li>
-        <li class="movie">
-          <img src="./assets/images/godzilla.jpg" alt="movie thumbnail" />
-          <h2 class="fw-400 fs-med text-align">godzilla</h2>
-        </li>
-        <li class="movie">
-          <img src="./assets/images/extraction.jpg" alt="movie thumbnail" />
-          <h2 class="fw-400 fs-med text-align">Extraction</h2>
-        </li>
-        <li class="movie">
-          <img src="./assets/images/chichore.jpg" alt="movie thumbnail" />
-          <h2 class="fw-400 fs-med text-align">chichore</h2>
-        </li>
-        <li class="movie">
-          <img src="./assets/images/godzilla.jpg" alt="movie thumbnail" />
-          <h2 class="fw-400 fs-med text-align">godzilla</h2>
-        </li>
-        <li class="movie">
-          <img src="./assets/images/extraction.jpg" alt="movie thumbnail" />
-          <h2 class="fw-400 fs-med text-align">extraction</h2>
-        </li>
-        <li class="movie">
-          <img src="./assets/images/chichore.jpg" alt="movie thumbnail" />
-          <h2 class="fw-400 fs-med text-align">chichore</h2>
-        </li>
-        <li class="movie">
-          <img src="./assets/images/ludo.jpg" alt="movie thumbnail" />
-          <h2 class="fw-400 fs-med text-align">Ludo</h2>
-        </li>
+      <ul class="movie-container mt flex flex-row" style="--mt: 4em" id="category-container">
+        <!-- <li class="movie clr-sec-l-bg clr-ter-text flex flex-jc-c flex-ai-c">
+          <h2 class="fw-400 fs-med text-align">comedy</h2>
+        </li>   -->
       </ul>
     </section>
 
     <!-- movie list  -->
     <section class="movie-list clr-ter-bg mt mb" style="--mt: 2em" id="movie-list">
-      <h2 class="text-align capitalize fw-500">Movie List</h2>
-      <p class="clr-sec-l-text text-align mt" style="--mt: 0.5em">
+      <h2 class="text-align capitalize fw-500" id="movie-list__name">Movie List</h2>
+      <p class="clr-sec-l-text text-align mt" style="--mt: 0.5em" id="movie-list__description">
         We are providing you a collection which you will love to watch
       </p>
       <div class="movie-container flex flex-row mt" style="--mt: 4em" id="movie-container">
