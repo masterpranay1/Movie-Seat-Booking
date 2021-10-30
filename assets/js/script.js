@@ -333,6 +333,8 @@ const searchButton = document.querySelector("#search-button");
 searchButton.addEventListener("click", (e) => {
   let searchTextTmp = searchInput.value.toLowerCase();
   let searchText = searchTextTmp.trim();
+  if(searchText.length == 0)
+  return;
   let movieFiltered = movies.filter((movie) => {
     return movie.name == searchText;
   });
