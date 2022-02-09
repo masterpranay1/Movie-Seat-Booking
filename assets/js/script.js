@@ -7,11 +7,19 @@ const heroRightArrow = document.querySelector("#hero__right-arrow");
 const heroContainer = document.querySelector("#hero__container");
 const heroMovieName = document.querySelector("#hero__movie-name");
 
-const heroMovieImages = ["extraction", "ludo", "godzilla", "chichore"];
+const heroMovieImages = [
+  "extraction",
+  "ludo",
+  "godzilla",
+  "chichore",
+  "bhaag-milkha-bhaag",
+  "ms-dhoni-the-untold-story",
+  "golmaal-again",
+];
 let imageNumber = 0;
 
 const changeHeroMovie = () => {
-  imageNumber = (imageNumber + 4) % 4;
+  imageNumber = (imageNumber + 7) % 7;
   // image css properties
   heroContainer.style.background = `url("https://masterpranay1.github.io/Movie-seat-booking/assets/images/${heroMovieImages[imageNumber]}.jpg")`;
   heroContainer.style.backgroundSize = "cover";
@@ -72,11 +80,20 @@ let SEATMATRIX = {
     [2, 4, 45],
     [3, 56],
   ],
+  "bhaag-milkha-bhaag": [
+    [3, 4, 5],
+    [12, 25],
+  ],
+  "ms-dhoni-the-untold-story": [
+    [1, 2, 20],
+    [2, 5],
+  ],
+  "golmaal-again": [[4, 3], [7]],
 };
-if (localStorage.getItem("seatmatrix")) {
-  SEATMATRIX = JSON.parse(localStorage.getItem("seatmatrix"));
+if (localStorage.getItem("seatmatrix1")) {
+  SEATMATRIX = JSON.parse(localStorage.getItem("seatmatrix1"));
 } else {
-  localStorage.setItem("seatmatrix", JSON.stringify(SEATMATRIX));
+  localStorage.setItem("seatmatrix1", JSON.stringify(SEATMATRIX));
 }
 
 const updateSeatBookMovieDom = (movie) => {
@@ -88,7 +105,9 @@ const updateSeatBookMovieDom = (movie) => {
 const updateSeatBookMatrixDom = (name = currMovieName) => {
   if (currMovieName == null) currMovieName = name;
   let cnt = 0;
+  // console.log(SEATMATRIX[name]);
   seats.forEach((seat) => {
+    // console.log(name);
     if (SEATMATRIX[name][0].includes(cnt)) {
       seat.classList.add("selected");
       seat.classList.remove("occupied");
@@ -125,7 +144,7 @@ seats.forEach((seat) => {
     SEATMATRIX[currMovieName][1] = occupied;
     updateSeatBookMatrixDom();
     updatePrice(currMovieName);
-    localStorage.setItem("seatmatrix", JSON.stringify(SEATMATRIX));
+    localStorage.setItem("seatmatrix1", JSON.stringify(SEATMATRIX));
   });
   seatNum++;
 });
@@ -190,6 +209,28 @@ const movies = [
     description: "Get thrilled with the awesome action and fight",
     price: "200",
     imageUrl: "./assets/images/extraction.jpg",
+  },
+  {
+    category: "biopic",
+    name: "bhaag-milkha-bhaag",
+    description: "This film chronicles Milkha singh aka Flying Singh",
+    price: "300",
+    imageUrl: "./assets/images/bhaag-milkha-bhaag.jpg",
+  },
+  {
+    category: "biopic",
+    name: "ms-dhoni-the-untold-story",
+    description:
+      "Know the story of Captain Cool. His journey from a ticket collector to World Cup",
+    price: "200",
+    imageUrl: "./assets/images/ms-dhoni-the-untold-story.jpg",
+  },
+  {
+    category: "horror",
+    name: "golmaal-again",
+    description: "A horror movie will full dose of fun",
+    price: "100",
+    imageUrl: "./assets/images/golmaal-again.jpg",
   },
 ];
 const newMovie = (movie) => {
@@ -333,8 +374,7 @@ const searchButton = document.querySelector("#search-button");
 searchButton.addEventListener("click", (e) => {
   let searchTextTmp = searchInput.value.toLowerCase();
   let searchText = searchTextTmp.trim();
-  if(searchText.length == 0)
-  return;
+  if (searchText.length == 0) return;
   let movieFiltered = movies.filter((movie) => {
     return movie.name == searchText;
   });
