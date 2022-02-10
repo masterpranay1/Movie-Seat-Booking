@@ -94,7 +94,7 @@ const totalPriceElem = document.querySelector("#total-price");
 let currMovieName = null;
 
 const updateSeatBookMovieDom = (movie) => {
-  movieName.textContent = movie.name.toUpperCase();
+  movieName.textContent = movie.name.toUpperCase().split('-').join(' ');
   description.textContent = movie.description;
   image.src = movie.imageUrl;
   price.textContent = movie.price;
