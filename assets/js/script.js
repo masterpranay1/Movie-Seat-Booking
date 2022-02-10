@@ -1,3 +1,37 @@
+// SEAT MATRIX
+let SEATMATRIX = {
+  chichore: [
+    [1, 2, 3],
+    [45, 23],
+  ],
+  extraction: [
+    [2, 4, 5, 40],
+    [22, 23],
+  ],
+  ludo: [
+    [3, 4],
+    [45, 71],
+  ],
+  godzilla: [
+    [2, 4, 45],
+    [3, 56],
+  ],
+  "bhaag-milkha-bhaag": [
+    [3, 4, 5],
+    [12, 25],
+  ],
+  "ms-dhoni-the-untold-story": [
+    [1, 2, 20],
+    [2, 5],
+  ],
+  "golmaal-again": [[4, 3], [7]],
+};
+if (localStorage.getItem("seatmatrix1")) {
+  SEATMATRIX = JSON.parse(localStorage.getItem("seatmatrix1"));
+} else {
+  localStorage.setItem("seatmatrix1", JSON.stringify(SEATMATRIX));
+}
+
 /* ******************** */
 /* hero carousel script */
 /* ******************** */
@@ -7,15 +41,12 @@ const heroRightArrow = document.querySelector("#hero__right-arrow");
 const heroContainer = document.querySelector("#hero__container");
 const heroMovieName = document.querySelector("#hero__movie-name");
 
-const heroMovieImages = [
-  "extraction",
-  "ludo",
-  "godzilla",
-  "chichore",
-  "bhaag-milkha-bhaag",
-  "ms-dhoni-the-untold-story",
-  "golmaal-again",
-];
+const heroMovieImages = [];
+const fun = function(){
+  for(var key in SEATMATRIX) {
+    heroMovieImages.push(key);
+  }
+}();
 let imageNumber = 0;
 
 const changeHeroMovie = () => {
@@ -26,7 +57,7 @@ const changeHeroMovie = () => {
   heroContainer.style.backgroundRepeat = "no-repeat";
   heroContainer.style.backgroundPosition = "right";
 
-  heroMovieName.textContent = heroMovieImages[imageNumber];
+  heroMovieName.textContent = heroMovieImages[imageNumber].split('-').join(' ');
 };
 heroLeftArrow.addEventListener("click", (e) => {
   imageNumber--;
@@ -61,40 +92,6 @@ const totalPriceElem = document.querySelector("#total-price");
 
 // current selected movie name
 let currMovieName = null;
-
-// SEAT MATRIX
-let SEATMATRIX = {
-  chichore: [
-    [1, 2, 3],
-    [45, 23],
-  ],
-  extraction: [
-    [2, 4, 5, 40],
-    [22, 23],
-  ],
-  ludo: [
-    [3, 4],
-    [45, 71],
-  ],
-  godzilla: [
-    [2, 4, 45],
-    [3, 56],
-  ],
-  "bhaag-milkha-bhaag": [
-    [3, 4, 5],
-    [12, 25],
-  ],
-  "ms-dhoni-the-untold-story": [
-    [1, 2, 20],
-    [2, 5],
-  ],
-  "golmaal-again": [[4, 3], [7]],
-};
-if (localStorage.getItem("seatmatrix1")) {
-  SEATMATRIX = JSON.parse(localStorage.getItem("seatmatrix1"));
-} else {
-  localStorage.setItem("seatmatrix1", JSON.stringify(SEATMATRIX));
-}
 
 const updateSeatBookMovieDom = (movie) => {
   movieName.textContent = movie.name.toUpperCase();
@@ -241,7 +238,7 @@ const newMovie = (movie) => {
             src="${movie.imageUrl}"
             alt="movie image"
           />
-          <h2 class="fs-l mt fw-400 capitalize" style="--mt: 1rem">${movie.name}</h2>
+          <h2 class="fs-l mt fw-400 capitalize" style="--mt: 1rem">${movie.name.split('-').join(' ')}</h2>
           <p
             class="description mt mb clr-sec-xl-text fs-s"
             style="--mt: 0.5rem"
@@ -289,6 +286,7 @@ const addEventOnMovieList = () => {
   movieList.querySelectorAll(".movie-wrapper").forEach((movieWrapper) => {
     movieWrapper.addEventListener("click", (e) => {
       let name = movieWrapper.querySelector("h2").textContent.toLowerCase();
+      name = name.split(' ').join('-');
       movies.forEach((movie) => {
         if (movie.name == name) {
           updateSeatBookMovieDom(movie);
@@ -374,6 +372,7 @@ const searchButton = document.querySelector("#search-button");
 searchButton.addEventListener("click", (e) => {
   let searchTextTmp = searchInput.value.toLowerCase();
   let searchText = searchTextTmp.trim();
+  searchText = searchText.split(' ').join('-');
   if (searchText.length == 0) return;
   let movieFiltered = movies.filter((movie) => {
     return movie.name == searchText;

@@ -5,17 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Movie Seat Booking</title>
-    <link rel="stylesheet" href="./assets/dist/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body class="flex flex-col clr-pri-bg">
     <!-- header and nav  -->
     <header class="flex flex-row flex-ai-c clr-ter-bg" id="header">
       <h1 class="fs-l">Movie.</h1>
       <ul class="flex flex-row flex-jc-sa flex-ai-c ml" style="--ml: auto">
-        <li class="clr-sec-xl-text fs-s active">Home</li>
-        <li class="clr-sec-xl-text fs-s ml">Category</li>
-        <li class="clr-sec-xl-text fs-s ml">Top List</li>
-        <li class="clr-sec-xl-text fs-s ml">About Us</li>
+        <li class="fs-s"><a class="clr-sec-xl-text" href="#home">Home</a></li>
+        <li class="fs-s ml">
+          <a class="clr-sec-xl-text" href="#category">Category</a>
+        </li>
+        <li class="fs-s ml">
+          <a class="clr-sec-xl-text" href="#movie-list">Movie List</a>
+        </li>
+        <li class="fs-s ml">
+          <a class="clr-sec-xl-text" href="#aboutus">About Us</a>
+        </li>
       </ul>
       <a href="#" class="ml fs-s" style="--ml: auto">Log in</a>
       <button class="ml fs-s" style="--ml: 1em">Sign up</button>
@@ -38,7 +44,7 @@
           fill="black"
         />
       </svg>
-      <a href="#" class="ml go-back" style="--ml:1em;">Go Back</a>
+      <a href="#" class="ml go-back" style="--ml: 1em">Go Back</a>
     </nav>
 
     <!-- hero and search -->
@@ -65,7 +71,9 @@
               fill="rgba(255, 255, 255, .8)"
             />
           </svg>
-          <h2 class="fs-m ml mr clr-ter-l-text uppercase" id="hero__movie-name">Extraction</h2>
+          <h2 class="fs-m ml mr clr-ter-l-text uppercase" id="hero__movie-name">
+            Extraction
+          </h2>
           <svg
             class="right-arrow"
             id="hero__right-arrow"
@@ -86,11 +94,11 @@
       </div>
       <div class="search__container flex flex-row flex-jc-c">
         <input
-          maxlength="20"
           type="text"
           class="movie-search-field clr-sec-l-text"
           placeholder="Search among all the movies"
           id="search-input"
+          autocomplete="off"
         />
         <div class="img-container clr-ter-bg" id="search-button">
           <img
@@ -144,7 +152,11 @@
           />
         </svg>
       </div>
-      <ul class="movie-container mt flex flex-row" style="--mt: 4em" id="category-container">
+      <ul
+        class="movie-container mt flex flex-row"
+        style="--mt: 4em"
+        id="category-container"
+      >
         <!-- <li class="movie clr-sec-l-bg clr-ter-text flex flex-jc-c flex-ai-c">
           <h2 class="fw-400 fs-med text-align">comedy</h2>
         </li>   -->
@@ -152,17 +164,34 @@
     </section>
 
     <!-- movie list  -->
-    <section class="movie-list clr-ter-bg mt mb" style="--mt: 2em" id="movie-list">
-      <h2 class="text-align capitalize fw-500" id="movie-list__name">Movie List</h2>
-      <p class="clr-sec-l-text text-align mt" style="--mt: 0.5em" id="movie-list__description">
+    <section
+      class="movie-list clr-ter-bg mt mb"
+      style="--mt: 2em"
+      id="movie-list"
+    >
+      <h2 class="text-align capitalize fw-500" id="movie-list__name">
+        Movie List
+      </h2>
+      <p
+        class="clr-sec-l-text text-align mt"
+        style="--mt: 0.5em"
+        id="movie-list__description"
+      >
         We are providing you a collection which you will love to watch
       </p>
-      <div class="movie-container flex flex-row mt" style="--mt: 4em" id="movie-container">
-      </div>
+      <div
+        class="movie-container flex flex-row mt"
+        style="--mt: 4em"
+        id="movie-container"
+      ></div>
     </section>
 
     <!-- seat booking  -->
-    <section class="book-seat flex flex-row flex-jc-c clr-ter-bg mt mb hide" style="--mt: 2em;" id="seat-book">
+    <section
+      class="book-seat flex flex-row flex-jc-c clr-ter-bg mt mb hide"
+      style="--mt: 2em"
+      id="seat-book"
+    >
       <div class="movie-wrapper mr">
         <img
           class="thumbnail"
@@ -170,8 +199,14 @@
           alt="movie image"
           id="seat-book__movie-image"
         />
-        <h2 class="mt fw-400" style="--mt: 1rem" id="seat-book__movie-name">Extraction</h2>
-        <p class="description mt mb clr-sec-xl-text fs-s" style="--mt: 0.5rem" id="seat-book__movie-description">
+        <h2 class="mt fw-400" style="--mt: 1rem" id="seat-book__movie-name">
+          Extraction
+        </h2>
+        <p
+          class="description mt mb clr-sec-xl-text fs-s"
+          style="--mt: 0.5rem"
+          id="seat-book__movie-description"
+        >
           A wizarding world full of secrets and magic
         </p>
         <div class="price-wrapper flex flex-row flex-ai-c">
@@ -181,12 +216,17 @@
             class="rupee-icon mr"
             style="--mr: 1em"
           />
-          <h3 class="price fs-mel clr-sec-text" id="seat-book__movie-price">120.00</h3>
+          <h3 class="price fs-mel clr-sec-text" id="seat-book__movie-price">
+            120.00
+          </h3>
         </div>
       </div>
 
       <!-- component where users can select there seats  -->
-      <div class="seat-book-area flex flex-col flex-ai-c flex-jc-c" id="seat-book-area">
+      <div
+        class="seat-book-area flex flex-col flex-ai-c flex-jc-c"
+        id="seat-book-area"
+      >
         <h2 class="fs-med fw-400">Select Seats :-</h2>
         <div class="seats mt mb" id="seats">
           <ul class="row-1-front" id="row-1-front">
@@ -274,16 +314,27 @@
             <li></li>
           </ul>
         </div>
-        <div class="hint flex flex-row flex-jc-c flex-ai-c mt" style="--mt:1em;">
+        <div
+          class="hint flex flex-row flex-jc-c flex-ai-c mt"
+          style="--mt: 1em"
+        >
           <div class="occupied seat-demo"></div>
-          <span class="ml uppercase fs-s clr-sec-xl-text" style="--ml:1em">occupied</span>
+          <span class="ml uppercase fs-s clr-sec-xl-text" style="--ml: 1em"
+            >occupied</span
+          >
           <div class="selected ml seat-demo"></div>
-          <span class="ml uppercase fs-s clr-sec-xl-text" style="--ml:1em">Selected</span>
+          <span class="ml uppercase fs-s clr-sec-xl-text" style="--ml: 1em"
+            >Selected</span
+          >
           <div class="vacant ml seat-demo"></div>
-          <span class="ml uppercase fs-s clr-sec-xl-text" style="--ml:1em">Vacant</span>
+          <span class="ml uppercase fs-s clr-sec-xl-text" style="--ml: 1em"
+            >Vacant</span
+          >
         </div>
         <div class="calc-area clr-sec-xl-text mt text-align mb">
-          You have selected <span class="clr-sec-text" id="quantity">5</span> seats for <span class="clr-sec-text" id="total-price">600 rupees</span>
+          You have selected
+          <span class="clr-sec-text" id="quantity">5</span> seats for
+          <span class="clr-sec-text" id="total-price">600 rupees</span>
         </div>
       </div>
     </section>

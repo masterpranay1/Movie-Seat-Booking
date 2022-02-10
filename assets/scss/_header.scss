@@ -1,33 +1,29 @@
 header {
-    width: 100%;
-    height: fit-content;
+  width: 100%;
+  height: fit-content;
 
-    --p-in : 5em;
-    --p-top : 1em;
-    --p-bot : 1em;
-    padding-inline: var(--p-in);
-    padding-top: var(--p-top);
-    padding-bottom: var(--p-bot);
-    @include breakpoint-down(tablet) {
-        --p-in : 2em;
-    }
+  --p-in: 5em;
+  --p-top: 1em;
+  --p-bot: 1em;
+  padding-inline: var(--p-in);
+  padding-top: var(--p-top);
+  padding-bottom: var(--p-bot);
+  @include breakpoint-down(tablet) {
+    --p-in: 2em;
+  }
 }
 header ul {
-    list-style: none;
-    > li:not(:first-child) {
-        --ml : 2em;
-    }
-    li.active {
-        color: var(--clr-sec);
-        cursor: pointer;
-    }
-    li:not(li.active):hover {
-        cursor: pointer;
-        color: var(--clr-sec-l);
-    }
+  list-style: none;
+  > li:not(:first-child) {
+    --ml: 2em;
+  }
+  li a:hover {
+    cursor: pointer;
+    color: var(--clr-sec-l);
+  }
 }
 header ul {
-    @include breakpoint-down(tablet) {
-        display: none !important;
-    }
+  @include breakpoint-down(tablet) {
+    display: none !important;
+  }
 }

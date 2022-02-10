@@ -278,12 +278,7 @@ header ul > li:not(:first-child) {
   --ml: 2em;
 }
 
-header ul li.active {
-  color: var(--clr-sec);
-  cursor: pointer;
-}
-
-header ul li:not(li.active):hover {
+header ul li a:hover {
   cursor: pointer;
   color: var(--clr-sec-l);
 }
