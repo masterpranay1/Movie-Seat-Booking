@@ -16,20 +16,20 @@ UI is kept Simple and interactive.
 
 ## Features
 
-- Fully Responsive
+### Fully Responsive
 
 ![Responsive](./video-screenshots/responsive.gif)
 
-- Movie List and Category
+### Movie List and Category
 
 ![Category](./video-screenshots/category.gif)
 ![Movie-list](./video-screenshots/movie-list.gif)
 
-- Carousel and Search
+### Carousel and Search
 
 ![Carousel](./video-screenshots/carousel.gif)
 ![Seach](./video-screenshots/search.gif)
 
-- Seat matrix 
+### Seat matrix 
 
 ![Seat-Matrix](./video-screenshots/seat-matrix.gif)
