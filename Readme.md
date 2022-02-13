@@ -20,14 +20,20 @@ UI is kept Simple and interactive.
 
 ![Responsive](./video-screenshots/responsive.gif)
 
-### Movie List and Category
+### Category
 
 ![Category](./video-screenshots/category.gif)
+
+### Movie List
+
 ![Movie-list](./video-screenshots/movie-list.gif)
 
-### Carousel and Search
+### Carousel
 
 ![Carousel](./video-screenshots/carousel.gif)
+
+### Search
+
 ![Seach](./video-screenshots/search.gif)
 
 ### Seat matrix 
